@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-public class OpenFeignClientGreetController {
+public class OpenFeignClientController {
 	
 	private final OpenFeignClientConfig openFeignClientConfig;
 	

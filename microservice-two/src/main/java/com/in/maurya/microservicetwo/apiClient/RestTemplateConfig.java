@@ -21,7 +21,6 @@ public class RestTemplateConfig {
 	}
 	
 	//Used for getting base url of other microservice based on hostname/application-name
-	@Bean
 	public String getBaseUrl() {
 	    InstanceInfo instance = eurekaClient.getNextServerFromEureka("microservice-one", false);
 	    System.out.println(instance.getHomePageUrl());
