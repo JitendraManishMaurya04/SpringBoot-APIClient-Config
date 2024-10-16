@@ -1,5 +1,9 @@
 package com.in.maurya.microservicetwo.apiClient;
 
+import java.time.Duration;
+
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.boot.web.client.RootUriTemplateHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +20,11 @@ public class RestTemplateConfig {
 	private final EurekaClient eurekaClient;
 	
 	@Bean
-	public RestTemplate getRestTemplate() {
-		return new RestTemplate();
+	public RestTemplate getRestTemplateUsingBuilder() {
+		return new RestTemplateBuilder()
+				.uriTemplateHandler(new RootUriTemplateHandler(getBaseUrl()+"microserviceone"))
+				.setConnectTimeout(Duration.ofMillis(5000))
+				.build();
 	}
 	
 	//Used for getting base url of other microservice based on hostname/application-name

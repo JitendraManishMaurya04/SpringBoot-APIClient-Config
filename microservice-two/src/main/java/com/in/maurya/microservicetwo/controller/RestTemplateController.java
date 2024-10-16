@@ -38,7 +38,7 @@ public class RestTemplateController {
 		
 		HttpEntity<Object> requestEntity =new HttpEntity<>(headers);
 		
-		ResponseEntity<String> responseEntity = restTemplate.exchange(restTemplateConfig.getBaseUrl() + "microserviceone/hi",
+		ResponseEntity<String> responseEntity = restTemplate.exchange("/hi",
 				HttpMethod.GET,
 				requestEntity,
 				String.class);
@@ -49,14 +49,14 @@ public class RestTemplateController {
 	@GetMapping("/microservicetwo/restTemplate/byEntity/hi")
 	public ResponseEntity<String> greet2() {
 		//Call Microservice-one and return its response
-		ResponseEntity<String> responseEntity = restTemplate.getForEntity(restTemplateConfig.getBaseUrl() + "microserviceone/hi", String.class);
+		ResponseEntity<String> responseEntity = restTemplate.getForEntity("/hi", String.class);
 		return responseEntity;
 	}
 	
 	@GetMapping("/microservicetwo/restTemplate/byObject/hi")
 	public String greet3() {
 		//Call Microservice-one and return its response
-		String response = restTemplate.getForObject(restTemplateConfig.getBaseUrl() + "microserviceone/hi", String.class);
+		String response = restTemplate.getForObject("/hi", String.class);
 		return response;
 	}
 	
@@ -67,7 +67,7 @@ public class RestTemplateController {
 		
 		HttpEntity<Object> requestEntity =new HttpEntity<>(headers);
 		
-		ResponseEntity<RequestModel> responseEntity = restTemplate.exchange(restTemplateConfig.getBaseUrl()  + "microserviceone/user/"+username+"/"+age,
+		ResponseEntity<RequestModel> responseEntity = restTemplate.exchange("/user/"+username+"/"+age,
 				HttpMethod.GET,
 				requestEntity,
 				RequestModel.class);
@@ -82,7 +82,7 @@ public class RestTemplateController {
 		
 		HttpEntity<Object> requestEntity =new HttpEntity<>(headers);
 		
-		ResponseEntity<List> responseEntity = restTemplate.exchange(restTemplateConfig.getBaseUrl()  + "microserviceone/users",
+		ResponseEntity<List> responseEntity = restTemplate.exchange("/users",
 				HttpMethod.GET,
 				requestEntity,
 				List.class);
@@ -92,13 +92,13 @@ public class RestTemplateController {
 	
 	@GetMapping("/microservicetwo/restTemplate/byEntity/users")
 	public ResponseEntity<List> getAllUsers2() {
-		ResponseEntity<List> responseEntity = restTemplate.getForEntity(restTemplateConfig.getBaseUrl()  + "microserviceone/users",List.class);
+		ResponseEntity<List> responseEntity = restTemplate.getForEntity("/users",List.class);
 		return responseEntity;
 	}
 	
 	@GetMapping("/microservicetwo/restTemplate/byObject/users")
 	public List getAllUsers3() {
-		List response = restTemplate.getForObject(restTemplateConfig.getBaseUrl()  + "microserviceone/users",List.class);
+		List response = restTemplate.getForObject("/users",List.class);
 		return response;
 	}
 
@@ -109,7 +109,7 @@ public class RestTemplateController {
 		
 		HttpEntity<Object> requestEntity =new HttpEntity<>(requestModel,headers);
 		
-		ResponseEntity<String> responseEntity = restTemplate.exchange(restTemplateConfig.getBaseUrl()  + "microserviceone/createUser",
+		ResponseEntity<String> responseEntity = restTemplate.exchange("/createUser",
 				HttpMethod.POST,
 				requestEntity,
 				String.class);
@@ -119,20 +119,20 @@ public class RestTemplateController {
 	
 	@PostMapping("/microservicetwo/restTemplate/byEntity/createUser")
 	public ResponseEntity<String> createUser2(@RequestBody RequestModel requestModel) {
-		ResponseEntity<String> responseEntity = restTemplate.postForEntity(restTemplateConfig.getBaseUrl()  + "microserviceone/createUser", requestModel, String.class);
+		ResponseEntity<String> responseEntity = restTemplate.postForEntity("/createUser", requestModel, String.class);
 		return responseEntity;
 	}
 	
 	@PostMapping("/microservicetwo/restTemplate/byObject/createUser")
 	public String createUser3(@RequestBody RequestModel requestModel) {
-		String response = restTemplate.postForObject(restTemplateConfig.getBaseUrl()  + "microserviceone/createUser", requestModel, String.class);
+		String response = restTemplate.postForObject("/createUser", requestModel, String.class);
 		return response;
 	}
 	
 	
 	@PostMapping("/microservicetwo/restTemplate/postForLocation/createUser")
 	public URI createUser4(@RequestBody RequestModel requestModel) {
-		URI uri = restTemplate.postForLocation(restTemplateConfig.getBaseUrl()  + "microserviceone/createUser", requestModel, String.class);
+		URI uri = restTemplate.postForLocation("/createUser", requestModel, String.class);
 		return uri;
 	}
 
