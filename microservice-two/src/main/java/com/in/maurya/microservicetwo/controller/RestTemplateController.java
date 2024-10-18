@@ -3,7 +3,6 @@ package com.in.maurya.microservicetwo.controller;
 import java.net.URI;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.in.maurya.microservicetwo.apiClient.RestTemplateConfig;
 import com.in.maurya.microservicetwo.model.RequestModel;
 
 import lombok.RequiredArgsConstructor;
@@ -26,9 +24,6 @@ import lombok.RequiredArgsConstructor;
 public class RestTemplateController {
 	
 	private final RestTemplate restTemplate;
-	
-	@Autowired 
-	private RestTemplateConfig restTemplateConfig;
 	
 	@GetMapping("/microservicetwo/restTemplate/exchange/hi")
 	public ResponseEntity<String> greet() {
