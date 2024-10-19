@@ -15,5 +15,4 @@ RestTemplate is a powerful synchronous client for handling HTTP communication in
 Spring WebFlux includes a client to perform HTTP requests with. WebClient has a functional, fluent API based on Reactor, see Reactive Libraries, which enables declarative composition of asynchronous logic without the need to deal with threads or concurrency. It is fully non-blocking, it supports streaming, and relies on the same codecs that are also used to encode and decode request and response content on the server side.
 
 ### Postman Collection
-Below is the folder location for postman collection to invoke microservice-one API's via different API Clients.
-SpringBoot-APIClient-Config/ApiClient.postman_collection
+SpringBoot-APIClient-Config/ApiClient.postman_collection is the folder location for postman collection to invoke microservice-one API's via different API Clients.
